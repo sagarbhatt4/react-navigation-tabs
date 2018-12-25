@@ -12,6 +12,7 @@ export type TabBarOptions = {
   showIcon?: boolean,
   upperCaseLabel?: boolean,
   labelStyle?: any,
+  activeLabelStyle?: any,
   iconStyle?: any,
   allowFontScaling?: boolean,
 };
@@ -53,6 +54,7 @@ export default class TabBarTop extends React.PureComponent<Props> {
       showLabel,
       upperCaseLabel,
       labelStyle,
+      activeLabelStyle,
       allowFontScaling,
     } = this.props;
 
@@ -80,7 +82,7 @@ export default class TabBarTop extends React.PureComponent<Props> {
     if (typeof label === 'string') {
       return (
         <Animated.Text
-          style={[styles.label, { color }, labelStyle]}
+          style={[styles.label, { color }, labelStyle, focused ? activeLabelStyle : null]}
           allowFontScaling={allowFontScaling}
         >
           {upperCaseLabel ? label.toUpperCase() : label}
